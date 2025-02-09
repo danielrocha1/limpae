@@ -1,70 +1,207 @@
-# Getting Started with Create React App
+# API de Diaristas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introdução
+Esta API permite a gestão de um marketplace de diaristas, onde clientes podem contratar serviços de limpeza e diaristas podem se cadastrar para oferecer seus serviços.
 
-## Available Scripts
+## Tecnologias Utilizadas
+- **Linguagem:** Go (Golang)
+- **Framework:** Fiber
+- **ORM:** GORM
+- **Banco de Dados:** PostgreSQL
+- **Autenticação:** JWT (em futuras implementações)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+# Endpoints da API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usuários (`/api/users`)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Criar um usuário
+**POST** `/api/users`
+```json
+{
+  "name": "João Silva",
+  "email": "joao@email.com",
+  "phone": "11999999999",
+  "password": "senha123",
+  "role": "cliente"
+}
+```
+**Resposta:**
+```json
+{
+  "id": 1,
+  "name": "João Silva",
+  "email": "joao@email.com",
+  "phone": "11999999999",
+  "role": "cliente",
+  "created_at": "2025-02-08T12:00:00Z"
+}
+```
 
-### `npm test`
+### Buscar todos os usuários
+**GET** `/api/users`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Buscar um usuário por ID
+**GET** `/api/users/:id`
 
-### `npm run build`
+### Atualizar um usuário
+**PUT** `/api/users/:id`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Deletar um usuário
+**DELETE** `/api/users/:id`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Endereços (`/api/addresses`)
 
-### `npm run eject`
+### Criar um endereço
+**POST** `/api/addresses`
+```json
+{
+  "user_id": 1,
+  "street": "Rua Exemplo",
+  "number": "100",
+  "city": "São Paulo",
+  "state": "SP",
+  "zipcode": "01000-000",
+  "latitude": -23.55052,
+  "longitude": -46.63331
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Buscar todos os endereços
+**GET** `/api/addresses`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Buscar um endereço por ID
+**GET** `/api/addresses/:id`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Atualizar um endereço
+**PUT** `/api/addresses/:id`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Deletar um endereço
+**DELETE** `/api/addresses/:id`
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Diaristas (`/api/diarists`)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Criar um diarista
+**POST** `/api/diarists`
+```json
+{
+  "user_id": 2,
+  "bio": "Tenho 5 anos de experiência em limpeza residencial.",
+  "experience_years": 5,
+  "price_per_hour": 50.00,
+  "available": true
+}
+```
 
-### Code Splitting
+### Buscar todos os diaristas
+**GET** `/api/diarists`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Buscar um diarista por ID
+**GET** `/api/diarists/:id`
 
-### Analyzing the Bundle Size
+### Atualizar um diarista
+**PUT** `/api/diarists/:id`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Deletar um diarista
+**DELETE** `/api/diarists/:id`
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Serviços (`/api/services`)
 
-### Advanced Configuration
+### Criar um serviço
+**POST** `/api/services`
+```json
+{
+  "client_id": 1,
+  "diarist_id": 2,
+  "address_id": 3,
+  "status": "pendente",
+  "total_price": 150.00,
+  "duration_hours": 3.00,
+  "scheduled_at": "2025-02-10T10:00:00Z"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Buscar todos os serviços
+**GET** `/api/services`
 
-### Deployment
+### Buscar um serviço por ID
+**GET** `/api/services/:id`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Atualizar um serviço
+**PUT** `/api/services/:id`
 
-### `npm run build` fails to minify
+### Deletar um serviço
+**DELETE** `/api/services/:id`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Pagamentos (`/api/payments`)
+
+### Criar um pagamento
+**POST** `/api/payments`
+```json
+{
+  "service_id": 1,
+  "client_id": 1,
+  "diarist_id": 2,
+  "amount": 150.00,
+  "status": "pendente",
+  "method": "pix"
+}
+```
+
+### Buscar todos os pagamentos
+**GET** `/api/payments`
+
+### Buscar um pagamento por ID
+**GET** `/api/payments/:id`
+
+### Atualizar um pagamento
+**PUT** `/api/payments/:id`
+
+### Deletar um pagamento
+**DELETE** `/api/payments/:id`
+
+---
+
+## Avaliações (`/api/reviews`)
+
+### Criar uma avaliação
+**POST** `/api/reviews`
+```json
+{
+  "service_id": 1,
+  "reviewer_id": 1,
+  "reviewed_id": 2,
+  "rating": 5,
+  "comment": "Serviço excelente!"
+}
+```
+
+### Buscar todas as avaliações
+**GET** `/api/reviews`
+
+### Buscar uma avaliação por ID
+**GET** `/api/reviews/:id`
+
+### Atualizar uma avaliação
+**PUT** `/api/reviews/:id`
+
+### Deletar uma avaliação
+**DELETE** `/api/reviews/:id`
+
+---
+
+# Autoria e Contato
+- **Desenvolvedor:** Daniel Rocha Tavares da Silva
+- **GitHub:** [github.com/de.maricaense](https://github.com/danielrocha1)
+- **Email:** daniel.rochats@gmail.com
+- **Instagram:** [@de.maricaense](https://instagram.com/dev.maricaense)
+

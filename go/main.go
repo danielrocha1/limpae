@@ -37,7 +37,7 @@ func main() {
     }
 
 	log.Println("🚀 Servidor rodando na porta", port)
-	if err := app.Listen(port); err != nil {
+	if err := app.Listen(":"+port); err != nil {
 		log.Fatal(err)
 	}
 }

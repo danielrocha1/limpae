@@ -33,7 +33,7 @@ func main() {
 	// Iniciar servidor
 	port := os.Getenv("PORT")
     if port == "" {
-        port = "8080" // Fallback para 8080, se a variável de ambiente não for encontrada
+        port = "10000" // Fallback para 8080, se a variável de ambiente não for encontrada
     }
 
 	log.Println("🚀 Servidor rodando na porta", port)

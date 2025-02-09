@@ -49,4 +49,22 @@ func SetupRoutes(app *fiber.App) {
 	api.Get("/reviews/:id", handlers.GetReview)
 	api.Put("/reviews/:id", handlers.UpdateReview)
 	api.Delete("/reviews/:id", handlers.DeleteReview)
+
+	// Rotas para Assinaturas
+	api.Post("/subscriptions", handlers.CreateSubscription)
+	api.Get("/subscriptions", handlers.GetSubscriptions)
+	api.Get("/subscriptions/:id", handlers.GetSubscription)
+	api.Put("/subscriptions/:id", handlers.UpdateSubscription)
+	api.Delete("/subscriptions/:id", handlers.CancelSubscription)
+
+	// Rotas para Autenticação
+//	api.Post("/login", handlers.Login)
+//	api.Post("/register", handlers.Register)
+
+	// Rota de fallback
+	app.Use(func(c *fiber.Ctx) error {
+		return c.Status(404).SendString("Página não encontrada")
+	})
+
+
 }

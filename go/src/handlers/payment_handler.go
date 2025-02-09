@@ -54,3 +54,28 @@ func DeletePayment(c *fiber.Ctx) error {
 	config.DB.Delete(&models.Payment{}, id)
 	return c.SendStatus(204)
 }
+
+
+
+func ProcessPayment(c *fiber.Ctx) error {
+	type Request struct {
+		SubscriptionID uint `json:"subscription_id"`
+		PaymentMethod  string `json:"payment_method"` // Ex: "cartão", "pix"
+	}
+
+	var req Request
+	if err := c.BodyParser(&req); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Requisição inválida"})
+	}
+
+	var subscription models.Subscription
+	if err := config.DB.First(&subscription, req.SubscriptionID).Error; err != nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "Assinatura não encontrada"})
+	}
+
+	// Simular pagamento aprovado
+	subscription.Status = "ativo"
+	config.DB.Save(&subscription)
+
+	return c.JSON(fiber.Map{"message": "Pagamento aprovado", "subscription": subscription})
+}

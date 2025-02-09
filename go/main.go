@@ -18,6 +18,7 @@ func main() {
 
 	// Criar nova instância do Fiber
 	app := fiber.New()
+	
 
 	// Middlewares globais
 	app.Use(logger.New()) // Logger de requisições
@@ -44,5 +45,5 @@ func main() {
 		log.Fatalf("Erro ao iniciar o servidor: %v", err)
 	}
 
-	fmt.Printf("Example app listening on port %s\n", port)
+	
 }

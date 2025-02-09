@@ -13,9 +13,9 @@ import (
 var DB *gorm.DB
 
 func ConnectDB() {
-	err := godotenv.Load("/home/warlord/Projetos/limpae/go/src/config/.env")
+	err := godotenv.Load("./src/config/.env")
 	if err != nil {
-		log.Fatal("Erro ao carregar .env")
+		log.Fatal("Erro ao carregaro .env")
 	}
 
 	databaseURL := os.Getenv("DATABASE_URL")

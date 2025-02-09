@@ -7,6 +7,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"log"
+	"os"
+
 )
 
 func main() {
@@ -29,7 +31,11 @@ func main() {
 	})
 
 	// Iniciar servidor
-	port := ":8080"
+	port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080" // Fallback para 8080, se a variável de ambiente não for encontrada
+    }
+
 	log.Println("🚀 Servidor rodando na porta", port)
 	if err := app.Listen(port); err != nil {
 		log.Fatal(err)

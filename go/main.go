@@ -9,13 +9,12 @@ import (
 	"log"
 	"os"
 	"fmt"
+
 )
 
 func main() {
 	// Iniciar conexão com o banco de dados
 	config.ConnectDB()
-	 
-
 	// Criar nova instância do Fiber
 	app := fiber.New()
 	

@@ -1,0 +1,146 @@
+:root {
+    --primary-color: #1E88E5;
+    --secondary-color: #43A047;
+    --background-color: #F5F7FA;
+    --sidebar-bg: #ECEFF1;
+    --sidebar-hover: #CFD8DC;
+    --card-bg: #FFFFFF;
+    --text-color: #333;
+  }
+  
+  h2{
+    display: flex;
+    justify-content: center;
+  }
+  .dashboard-wrapper {
+    border-radius: 15px;
+    display: flex;
+    width:80vw;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: var(--background-color);
+  }
+  
+  .dashboard-container {
+    display: flex;
+    width: 90%;
+    height: 90%;
+    background: var(--card-bg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+
+  /* Ícone do menu */
+  .sidebar li::before {
+    content: "🏠"; /* Ícone padrão */
+    font-size: 20px;
+    display: inline-block;
+  }
+  
+  /* Ícones personalizados para cada item */
+  .sidebar li:nth-child(2)::before { content: "📊 "; }
+  .sidebar li:nth-child(3)::before { content: "⚙️ "; }
+  
+  /* Sidebar recolhida */
+  .sidebar {
+    text-align: center;
+    width: 60px;
+    background: var(--sidebar-bg);
+    color: var(--text-color);
+    padding: 20px 10px;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  /* Sidebar expandida ao hover */
+  .sidebar:hover {
+    width: 260px;
+    align-items: flex-start;
+  }
+  
+  /* Esconder os itens da lista por padrão */
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    display: none;
+  }
+  
+  /* Mostrar os itens da lista quando o menu estiver em hover */
+  .sidebar:hover ul {
+    display: block;
+  }
+  
+  /* Estilização dos itens do menu */
+  .sidebar li {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 6px;
+    background: var(--card-bg);
+    transition: background 0.3s ease, transform 0.2s;
+  }
+  
+  .sidebar li:hover {
+    background: var(--sidebar-hover);
+    transform: scale(1.05);
+  }
+  
+  /* Conteúdo principal */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    background: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .header {
+    background: var(--primary-color);
+    color: white;
+    padding: 18px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 20px;
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    flex: 1;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 5px solid var(--secondary-color);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+
+  body{
+    min-height:0px;
+  }  

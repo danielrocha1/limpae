@@ -1,0 +1,81 @@
+/* Fundo azul gradiente para toda a página */
+body {
+    background: linear-gradient(to bottom right, #3b82f6, #1e3a8a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 140vh;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+/* Caixa do formulário */
+.container {
+    height: 95vh;
+    background: white;
+    padding: 50px 70px 100px 50px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Títulos */
+h2 {
+    color: #1e40af;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #2563eb;
+    font-size: 18px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+/* Inputs e Select */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 2px solid #3b82f6;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-field:focus {
+    border-color: #1e3a8a;
+    box-shadow: 0px 0px 8px rgba(59, 130, 246, 0.6);
+}
+
+/* Estilo do campo do cartão */
+.card-container {
+    border: 2px solid #3b82f6;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    margin-top: 10px;
+}
+
+/* Botão de pagamento */
+.button-pay {
+    width: 100%;
+    background: linear-gradient(to right, #2563eb, #1e40af);
+    color: white;
+    font-size: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: 0.3s;
+}
+
+.button-pay:hover {
+    background: linear-gradient(to right, #1e40af, #0f172a);
+    box-shadow: 0px 4px 12px rgba(59, 130, 246, 0.5);
+}

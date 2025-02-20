@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
+import Login from './forms/login';
+import PaymentPage from './forms/register';
+
+import MultiStepForm from './forms/multiform';
+import Dashboard from './dashboard/dashboard'
+
+import MapPage from './diaristmap/map';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+
+    {/* <Login /> */}
+
+    {/* <PaymentPage /> */}
+
+    {/* <MultiStepForm /> */}
+
+    <MapPage />
+
+    {/* <Dashboard /> */}
   </React.StrictMode>
 );
 

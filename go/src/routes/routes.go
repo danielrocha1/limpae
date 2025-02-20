@@ -2,6 +2,7 @@ package routes
 
 import (
 	"limpae/go/src/handlers"
+	"limpae/go/src/controllers"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -16,9 +17,9 @@ func SetupRoutes(app *fiber.App) {
 	api.Delete("/users/:id", handlers.DeleteUser)
 
 	// Rotas para Diaristas
-	api.Post("/diarists", handlers.CreateDiarist)
-	api.Get("/diarists", handlers.GetDiarists)
-	api.Get("/diarists/:id", handlers.GetDiarist)
+	api.Post("/diarists", handlers.CreateDiaristProfile)
+	// api.Get("/diarists", handlers.GetDiarists)
+	// api.Get("/diarists/:id", handlers.GetDiarist)
 	api.Put("/diarists/:id", handlers.UpdateDiarist)
 	api.Delete("/diarists/:id", handlers.DeleteDiarist)
 
@@ -57,9 +58,13 @@ func SetupRoutes(app *fiber.App) {
 	api.Put("/subscriptions/:id", handlers.UpdateSubscription)
 	api.Delete("/subscriptions/:id", handlers.CancelSubscription)
 
-	// Rotas para Autenticação
-//	api.Post("/login", handlers.Login)
-//	api.Post("/register", handlers.Register)
+	api.Post("/userprofile", handlers.CreateUserProfile)
+	api.Post("/upload-photo", controllers.UploadPhotoHandler)
+
+
+	api.Get("/diarists-nearby", func(c *fiber.Ctx) error {
+		return handlers.GetNearbyDiarists(c)
+	})
 
 	// Rota de fallback
 	app.Use(func(c *fiber.Ctx) error {

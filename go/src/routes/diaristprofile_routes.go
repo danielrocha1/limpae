@@ -8,7 +8,7 @@ import (
 func SetupDiaristRoutes(api fiber.Router) {
     diarists := api.Group("/diarists")
 
-    diarists.Post("/", handlers.CreateDiarist)
+    diarists.Post("/", handlers.CreateDiaristProfile)
     diarists.Get("/", handlers.GetDiarists)
     diarists.Get("/:id", handlers.GetDiarist)
     diarists.Put("/:id", handlers.UpdateDiarist)

@@ -7,8 +7,8 @@ import (
 )
 
 // Criar Diarista
-func CreateDiarist(c *fiber.Ctx) error {
-	diarist := new(models.Diarist)
+func CreateDiaristProfile(c *fiber.Ctx) error {
+	diarist := new(models.Diarists)
 	if err := c.BodyParser(diarist); err != nil {
 		return c.Status(400).JSON(fiber.Map{"error": "Invalid input"})
 	}
@@ -20,7 +20,7 @@ func CreateDiarist(c *fiber.Ctx) error {
 
 // Listar Todos os Diaristas
 func GetDiarists(c *fiber.Ctx) error {
-	var diarists []models.Diarist
+	var diarists []models.Diarists
 	config.DB.Find(&diarists)
 	return c.JSON(diarists)
 }
@@ -28,7 +28,7 @@ func GetDiarists(c *fiber.Ctx) error {
 // Obter Diarista por ID
 func GetDiarist(c *fiber.Ctx) error {
 	id := c.Params("id")
-	var diarist models.Diarist
+	var diarist models.Diarists
 	if err := config.DB.First(&diarist, id).Error; err != nil {
 		return c.Status(404).JSON(fiber.Map{"error": "Diarist not found"})
 	}
@@ -38,7 +38,7 @@ func GetDiarist(c *fiber.Ctx) error {
 // Atualizar Diarista
 func UpdateDiarist(c *fiber.Ctx) error {
 	id := c.Params("id")
-	var diarist models.Diarist
+	var diarist models.Diarists
 	if err := config.DB.First(&diarist, id).Error; err != nil {
 		return c.Status(404).JSON(fiber.Map{"error": "Diarist not found"})
 	}
@@ -52,7 +52,7 @@ func UpdateDiarist(c *fiber.Ctx) error {
 // Deletar Diarista
 func DeleteDiarist(c *fiber.Ctx) error {
 	id := c.Params("id")
-	if err := config.DB.Delete(&models.Diarist{}, id).Error; err != nil {
+	if err := config.DB.Delete(&models.Diarists{}, id).Error; err != nil {
 		return c.Status(500).JSON(fiber.Map{"error": "Failed to delete diarist"})
 	}
 	return c.JSON(fiber.Map{"message": "Diarist deleted successfully"})

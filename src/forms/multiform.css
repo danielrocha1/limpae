@@ -1,0 +1,39 @@
+/* MultiStepForm.css */
+.form-container {
+    max-width: 800px;
+    width: 400px;
+    margin: auto;
+    padding: 60px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.form-step {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, select, textarea {
+    width: 90%;
+    padding: 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+button {
+    padding: 14px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
